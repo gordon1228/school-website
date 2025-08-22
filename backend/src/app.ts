@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import { sessionConfig } from './middleware/session';
 import authRoutes from './routes/auth';
 import { initializeDatabase } from './config/database';
+import roleRoutes from './routes/roles';
+import permissionRoutes from './routes/permissions';
 
 // Load environment variables
 dotenv.config();
@@ -89,6 +91,8 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/roles', roleRoutes);
+app.use('/api/permissions', permissionRoutes);
 
 // Global error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
